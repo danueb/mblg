@@ -40,10 +40,44 @@ $(document).ready(function() {
     url: '/posts'
   });
 
+  window.ViewMaster = Backbone.Model.extend({
+    // "reel" 3d fun!
+
+    initialize: function() {
+      this.set({'currentPostIndex': window.posts.length - 1})
+    },
+
+    currentPost: function(){
+      return window.posts.at(this.get('currentPostIndex'));
+    }
+
+  })
+
   window.movies = new window.Movies(window.movieData);
   window.posts = new window.Posts(window.postData);
+  window.viewMaster = new window.ViewMaster();
 
   // VIEWS //
+
+  window.MainView = Backbone.View.extend({
+    className: 'main',
+
+    initialize: function() {
+      _.bindAll(this, 'render');
+      this.postView = new PostView({
+        model: this.model.currentPost()
+      });
+      this.movieInfoView = new MovieInfoView({
+        model: this.model.currentPost().movie()
+      })
+    },
+
+    render: function() {
+      $(this.el).append(this.postView.render().el);
+      $(this.el).append(this.movieInfoView.render().el);
+      return this;
+    }
+  });
 
   window.HeaderView = Backbone.View.extend({
     tagName: 'header',
@@ -126,28 +160,21 @@ $(document).ready(function() {
     },
 
     initialize: function() {
-      var post = window.posts.last();
       this.headerView = new HeaderView();
-      this.postView = new PostView({
-        model: post
+      this.mainView = new MainView({
+        model: viewMaster
       });
-      this.movieInfoView = new MovieInfoView({
-        model: post.movie()
-      })
     },
 
     home: function() {
       // Mom's div and Mom's favorite div
-      var $moms = $('#moms-div'), $favDiv = $moms.find('#favorite-div');
-
-      $favDiv.empty();
-
+      var $moms = $('#moms-div');
       if (!$(".top-nav")[0]){
         $moms.before(this.headerView.render().el);
       }
 
-      $favDiv.append(this.postView.render().el);
-      $favDiv.append(this.movieInfoView.render().el);
+      $moms.empty();
+      $moms.append(this.mainView.render().el);
     }
   });
 
