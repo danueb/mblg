@@ -1,10 +1,58 @@
 <% provide(:title, "mvblg") %>
 
-<script id="movie-template" type="text/x-handlebars-template">
-  {{title}} <br />
-  {{year}}
+<script id="header-template" type="text/x-handlebars-template">
+  <div class="nav-head"><h1>mblg</h1></div>
+  <div class="nav-option list">list</div>
+  <div class="nav-option about">huh?</div>
+</script>
+
+<script id="post-template" type="text/x-handlebars-template">
+  <div class="container">
+    <header>
+      <h1><span>I Watched: </span>{{movieTitle}}</h1>
+      <time>{{date}}</time>
+    </header>
+    {{{content}}}
+    <footer>
+      <div class="prev">Previous</div>
+      <div class="next">Next</div>
+    </footer>
+  </div>
 </script>
 
 <script id="movies-template" type="text/x-handlebars-template">
   <h1> TEST TEST </h1>
+  <ul class="movie-list">
+  </ul>
+</script>
+
+<script id="movie-template" type="text/x-handlebars-template">
+  {{title}} <span>({{year}})</span>
+</script>
+
+<script id="movie-info-template" type="text/x-handlebars-template">
+  <div class="container">
+    <header>
+      {{#if imdb.Poster}}
+        <img width="212" src={{imdb.Poster}} />
+      {{/if}}
+      <h1>{{title}} <span>({{year}})</span></h1>
+    </header>
+    {{#if imdb}}
+      <ul>
+          <li><span>Director: </span>{{imdb.Director}}</li>
+          <li><span>Writer: </span>{{imdb.Writer}}</li>
+          <li><span>Starring: </span>{{imdb.Actors}}</li>
+          <li><span>Released: </span>{{imdb.Released}}</li>
+          <li><span>IMDB&#39;s Synopsis: </span>{{imdb.Plot}}</li>
+        </ul>
+    {{else}}
+      <p>Loading data from IMDB...</p>
+      <p>If this is on screen long enough so that you can read it, something probably went wrong while fetching the data. Or IMDB is having issues. Yeah, let&#39;s push the blame their way.</p>
+    {{/if}}
+  </div>
+</script>
+<script type="text/javascript">
+  window.movieData = <%= raw(@movies) %>
+  window.postData = <%= raw(@posts) %>
 </script>
