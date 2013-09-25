@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mblg</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="top-nav">
+    <div class="nav-head"><h1>mblg</h1></div>
+    <div class="nav-option list">list</div>
+    <div class="nav-option about">huh?</div>
+  </header>
+  <%= yield %>
+  <div class="container">
 
-<%= yield %>
-
+  </div>
 </body>
 </html>
