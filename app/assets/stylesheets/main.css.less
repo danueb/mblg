@@ -67,6 +67,12 @@ body {
       margin: 0 -30px 0 0;
       padding: 10px;
     }
+    &.buttonify {
+      cursor: pointer;
+      .no-touch &:hover {
+        h1{ color: @darkPurple; }
+      }
+    }
   }
   .nav-option {
     .make-xs-column(6);
