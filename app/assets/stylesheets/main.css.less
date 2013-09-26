@@ -28,7 +28,7 @@ body {
   color: @darkColor;
   padding: 14px;
   cursor: pointer;
-  &:hover {
+  .no-touch &:hover {
     background-color: @darkColor;
     color: white;
   }
@@ -97,10 +97,28 @@ body {
       }
     }
     a {
-      color: darken(@darkColor, 13%);
+      color: @darkColor;
       &:visited{
-        color: darken(@darkColor, 28%);
+        color: @darkColor;
       }
+    }
+  }
+}
+
+.about {
+  .content-chunk(@lightPurple, @darkPurple);
+  .me {
+    max-width: 545px;
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      float: right;
+      border: solid @darkPurple 10px;
+      margin: 5px 20px;
+    }
+    p {
+      text-align: right;
+      padding-top: 25px;
     }
   }
 }

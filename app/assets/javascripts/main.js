@@ -235,5 +235,8 @@ $(document).ready(function() {
   $(function() {
     window.App = new Mblg();
     Backbone.history.start();
-  })
+    if($(window).width() < 768){
+      window.scroll(0,38);
+    }
+  });
 });
