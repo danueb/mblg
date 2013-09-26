@@ -20,17 +20,25 @@ body {
   .make-row();
 }
 
-.column-link(@color) {
+.column-link(@lightColor, @darkColor) {
   text-align: center;
   font-size: 16px;
   line-height: 18px;
   letter-spacing: 2px;
-  color: @color;
+  color: @darkColor;
   padding: 14px;
   cursor: pointer;
   &:hover {
-    background-color: @color;
+    background-color: @darkColor;
     color: white;
+  }
+
+  &.disabled {
+    color: lighten(@nearBlack, 28%);
+    cursor: auto;
+    &:hover {
+      background-color: @lightColor;
+    }
   }
 }
 
@@ -64,7 +72,7 @@ body {
     .make-xs-column(6);
     .make-sm-column(2);
     .make-lg-column(1);
-    .column-link(@darkPurple);
+    .column-link(@lightPurple, @darkPurple);
   }
 }
 
@@ -116,7 +124,7 @@ body {
     .make-row();
     div {
       .make-xs-column(6);
-      .column-link(@darkGreen);
+      .column-link(@lightGreen, @darkGreen);
     }
   }
 }
