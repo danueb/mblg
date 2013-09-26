@@ -58,14 +58,18 @@ $(document).ready(function() {
     },
 
     goNext: function() {
+      var nextIndex = this.get('currentPostIndex') + 1
       if(!this.onLast()){
-        this.set({'currentPostIndex': this.get('currentPostIndex') + 1});
+        this.set({'currentPostIndex': nextIndex});
+        App.navigate('/'+nextIndex);
       }
     },
 
     goPrev: function() {
+      var prevIndex = this.get('currentPostIndex') - 1
       if(!this.onFirst()){
-        this.set({'currentPostIndex': this.get('currentPostIndex') - 1});
+        this.set({'currentPostIndex': prevIndex});
+        App.navigate('/'+prevIndex);
       }
     }
 
@@ -201,7 +205,8 @@ $(document).ready(function() {
 
   window.Mblg = Backbone.Router.extend({
     routes: {
-      '': 'home'
+      '': 'home',
+      ':postid': 'post'
     },
 
     initialize: function() {
@@ -219,6 +224,11 @@ $(document).ready(function() {
 
       $moms.empty();
       $moms.append(this.mainView.render().el);
+    },
+
+    post: function(postid) {
+      this.home();
+      viewMaster.set({'currentPostIndex': postid});
     }
   });
 
