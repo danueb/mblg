@@ -38,7 +38,7 @@ $(document).ready(function() {
   });
 
   window.ViewMaster = Backbone.Model.extend({
-    // "reel" 3d fun!
+    // reel 3d fun!
 
     initialize: function() {
       // Put these in defaults? Idk
@@ -66,6 +66,10 @@ $(document).ready(function() {
       return this.get('currentPostIndex') == (window.posts.length - 1);
     },
 
+    postExists: function(index) {
+      return (index >= 0 && index < window.posts.length);
+    },
+
     currentPost: function() {
       return window.posts.at(this.get('currentPostIndex'));
     },
@@ -73,6 +77,13 @@ $(document).ready(function() {
     goToHome: function() {
       this.set({'currentView': 'home'});
       this.setPostUrl();
+    },
+
+    goToPost: function(index) {
+      if(this.postExists(index)){
+        this.set({'currentPostIndex': index});
+        this.goToHome();
+      }
     },
 
     goNext: function() {
@@ -93,7 +104,13 @@ $(document).ready(function() {
 
     goToAbout: function() {
       this.set({'currentView': 'about'});
-      App.navigate('/about');    },
+      App.navigate('/about');    
+    },
+
+    goToList: function() {
+      this.set({'currentView': 'list'});
+      App.navigate('/list');   
+    },
 
     setPostUrl: function() {
       var index = this.get('currentPostIndex');
@@ -128,6 +145,10 @@ $(document).ready(function() {
         viewMaster: this.model
       });
       this.aboutView = new AboutView();
+      this.listView = new ListView({
+        collection: movies,
+        viewMaster: this.model
+      });
 
       this.listenTo(this.model, 'change:currentPostIndex', this.update);
       this.listenTo(this.model, 'change:currentView', this.toggleSubviews);
@@ -149,6 +170,7 @@ $(document).ready(function() {
 
     render: function() {
       $(this.el).append(this.aboutView.render().el);
+      $(this.el).append(this.listView.render().el);
       $(this.el).append(this.postView.render().el);
       $(this.el).append(this.movieInfoView.render().el);
       this.toggleSubviews();
@@ -157,6 +179,7 @@ $(document).ready(function() {
 
     toggleSubviews: function() {
       this.$('.about').toggle(this.model.onAbout());
+      this.$('.list').toggle(this.model.onList());
       this.$('.post').toggle(this.model.onHome());
       this.$('.movie-info').toggle(this.model.onHome());
       this.$('.list').toggle(this.model.onList());
@@ -182,11 +205,11 @@ $(document).ready(function() {
     },
 
     toggleHomeButton: function() {
-      this.$('.nav-head').toggleClass('buttonify', !this.viewMaster.onHome());
+      this.$('.nav-head').toggleClass('clickable', !this.viewMaster.onHome());
     },
 
     events: {
-      "click .nav-head.buttonify": "home",
+      "click .nav-head.clickable": "home",
       "click .nav-option.list": "list",
       "click .nav-option.about": "about"
     },
@@ -196,8 +219,11 @@ $(document).ready(function() {
     },
 
     list: function() {
-      // TODO: list
-      console.log('list button pushed');
+      if(this.viewMaster.onList()){
+        this.viewMaster.goToHome();
+      } else {
+        this.viewMaster.goToList();
+      }
     },
 
     about: function() {
@@ -224,7 +250,58 @@ $(document).ready(function() {
     }
 
     // TODO: remember, there's a link to the list view in here
-  })
+  });
+
+  window.ListView = Backbone.View.extend({
+    tagName: 'section',
+    className: 'list',
+    template: Handlebars.compile( $('#list-template').html() ),
+
+    initialize: function() {
+      _.bindAll(this, 'render');
+    },
+
+    render: function() {
+      var vm = this.options.viewMaster;
+      $(this.el).html( this.template( {} ));
+      $listTag = this.$('ul.movie-list');
+      this.collection.each(function(movie){
+        var view = new MovieListingView({
+          model: movie,
+          viewMaster: vm
+        });
+        $listTag.append(view.render().el);
+      });
+      return this;
+    }
+  });
+
+  window.MovieListingView = Backbone.View.extend({
+    tagName: 'li',
+    template: Handlebars.compile( $('#movie-listing-template').html() ),
+
+    initialize: function() {
+      _.bindAll(this, 'render');
+      this.viewMaster = this.options.viewMaster;
+    },
+
+    render: function() {
+      var id = this.model.get('id') - 1;
+      $(this.el).html( this.template( this.model.toJSON() ));
+      $(this.el).toggleClass('clickable', this.viewMaster.postExists(id));
+      return this;
+    },
+
+    events: {
+      'click': 'viewPost'
+    },
+
+    viewPost: function() {
+      var id = this.model.get('id') - 1;
+      console.log(id);
+      this.viewMaster.goToPost(id);
+    }
+  });
 
   window.PostView = Backbone.View.extend({
     tagName: 'article',
@@ -282,23 +359,11 @@ $(document).ready(function() {
     }
   });
 
-  // window.MoviesViews = Backbone.View.extend({
-  //   className: 'movies',
-  //   template: Handlebars.compile( $('#movies-template').html() ),
-
-  //   initialize: function() {
-  //     _.bindAll(this, 'render');
-  //     this.listenTo(this.collection, 'reset', this.render);
-  //   },
-
-  //   render: function() {
-  //   }
-  // });
-
   window.Mblg = Backbone.Router.extend({
     routes: {
       '': 'home',
       'about': 'about',
+      'list': 'list',
       'post/:postid': 'post'
     },
 
@@ -321,6 +386,11 @@ $(document).ready(function() {
     about: function() {
       this.home();
       viewMaster.set({'currentView': 'about'});
+    },
+
+    list: function() {
+      this.home();
+      viewMaster.set({'currentView': 'list'});
     },
 
     post: function(postid) {

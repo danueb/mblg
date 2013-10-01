@@ -20,16 +20,6 @@
   </div>
 </script>
 
-<script id="movies-template" type="text/x-handlebars-template">
-  <h1> TEST TEST </h1>
-  <ul class="movie-list">
-  </ul>
-</script>
-
-<script id="movie-template" type="text/x-handlebars-template">
-  {{title}} <span>({{year}})</span>
-</script>
-
 <script id="movie-info-template" type="text/x-handlebars-template">
   <div class="container">
     <header>
@@ -63,6 +53,17 @@
     <div class="me"><img src="https://en.gravatar.com/userimage/51643547/98c26360a2f82f88284b38e5771bba9d.jpg?size=100"><p>Oh yeah, who am I exactly? I&#39;m Daniel Uebelein. This is my face. Sometimes I tweet <a href="https://twitter.com/Danueb">here</a> but usually I&#39;m not doing that.</p></div>
     </div>
 </script>
+<script id="list-template" type="text/x-handlebars-template">
+  <div class="container">
+    <header><h1>Movie List</h1></header>
+    <ul class="movie-list"></ul>
+  </div>
+</script>
+
+<script id="movie-listing-template" type="text/x-handlebars-template">
+  <span>({{year}})</span> {{title}}
+</script>
+
 <script type="text/javascript">
   window.movieData = <%= raw(@movies) %>
   window.postData = <%= raw(@posts) %>
