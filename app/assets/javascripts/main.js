@@ -4,12 +4,15 @@ $(document).ready(function() {
 
   window.Movie = Backbone.Model.extend({
     initialize: function() {
-      var imdbURL = "http://www.omdbapi.com/?i=" + this.get('imdb_id');
-      this.imdb = new IMDBData({ 'url': imdbURL });
+      var tmdbURL = "http://api.themoviedb.org/3/movie/"
+                   + this.get('tmdb_id')
+                   + "?api_key=98a34be63cee4bcc6a3b15ebf867ffdd"
+                   + "&append_to_response=casts";
+      this.facts = new tmdbData({ 'url': tmdbURL});
     }
   });
 
-  window.IMDBData = Backbone.Model.extend({
+  window.tmdbData = Backbone.Model.extend({
     url: function(){
       return this.get('url');
     }
@@ -340,17 +343,17 @@ $(document).ready(function() {
     template: Handlebars.compile( $('#movie-info-template').html() ),
 
     initialize: function() {
-      _.bindAll(this, 'render', 'updateData');
-      this.listenTo(this.model.imdb, 'change', this.updateData);
+      _.bindAll(this, 'render', 'updateFacts');
+      this.listenTo(this.model.facts, 'change', this.updateFacts);
       this.listenTo(this.model, 'change', this.render);
 
-      if(!this.model.imdb.has('title')){
-        this.model.imdb.fetch();
+      if(!this.model.facts.has('title')){
+        this.model.facts.fetch();
       }
     },
 
-    updateData: function() {
-      this.model.set({ 'imdb': this.model.imdb.toJSON() });
+    updateFacts: function() {
+      this.model.set({ 'facts': this.model.facts.toJSON() });
     },
 
     render: function() {
@@ -400,6 +403,46 @@ $(document).ready(function() {
   });
 
   $(function() {
+    Handlebars.registerHelper('posterUrl', function(path){
+      return "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w342" + path;
+    });
+
+    Handlebars.registerHelper('director', function(crew){
+      return _.findWhere(crew, {job: "Director"}).name;
+    });
+
+    Handlebars.registerHelper('writerLabel', function(crew){
+      var writers = _.where(crew, {department: "Writing"});
+      if(writers.length > 1){
+        return "Writers"
+      } else {
+        return "Writer"
+      }
+    });
+
+    Handlebars.registerHelper('writers', function(crew){
+      var writers, out = "", limit = 2, i = 0;
+      writers = _.where(crew, {department: "Writing"});
+
+      if (limit > writers.length) { limit = writers.length; }
+      for(i = 0; i < limit; i++){
+        if(i != 0) { out += ", "; }
+        out += writers[i].name;
+      }
+      if (writers.length > limit) { out += ", others"; }
+      return out;
+    });
+
+    Handlebars.registerHelper('stars', function(cast){
+      var out = "", limit = 4, i = 0;
+      if (limit > cast.length) { limit = cast.length; }
+      for(i = 0; i < limit; i++){
+        if(i != 0) { out += ", "; }
+        out += cast[i].name;
+      }
+      return out;
+    });
+
     window.App = new Mblg();
     Backbone.history.start();
     if($(window).width() < 768){
