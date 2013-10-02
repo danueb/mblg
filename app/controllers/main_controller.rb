@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    @movies ||= File.read('app/assets/javascripts/fake_movies.json')
+    @movies ||= Movie.all.to_json
     @posts ||= File.read('app/assets/javascripts/fake_posts.json')
   end
   def test

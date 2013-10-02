@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @data ||= File.read('app/assets/javascripts/fake_movies.json')
+    @data ||= Movie.all
     render :json => @data
   end
 end

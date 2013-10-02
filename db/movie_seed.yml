@@ -1,0 +1,301 @@
+movies:
+  - title: Rosencrantz & Guildenstern Are Dead
+    year: 1990
+    tmdb_id: 18971
+  - title: The Hunt for Red October
+    year: 1990
+    tmdb_id: 1669
+  - title: The Cook the Thief His Wife & Her Lover
+    year: 1990
+    tmdb_id: 7452
+  - title: Miami Blues
+    year: 1990
+    tmdb_id: 14931
+  - title: Total Recall
+    year: 1990
+    tmdb_id: 861
+  - title: Metropolitan
+    year: 1990
+    tmdb_id: 15389
+  - title: Goodfellas
+    year: 1990
+    tmdb_id: 769
+  - title: Trust
+    year: 1990
+    tmdb_id: 37291
+  - title: Home Alone
+    year: 1990
+    tmdb_id: 771
+  - title: Edward Scissorhands
+    year: 1990
+    tmdb_id: 162
+  - title: LA Story
+    year: 1991
+    tmdb_id: 2107
+  - title: The Silence of the Lambs
+    year: 1991
+    tmdb_id: 274
+  - title: Thelma & Louise
+    year: 1991
+    tmdb_id: 1541
+  - title: "Terminator 2: Judgment Day"
+    year: 1991
+    tmdb_id: 280
+  - title: Slacker
+    year: 1991
+    tmdb_id: 14022
+  - title: Boyz N the Hood
+    year: 1991
+    tmdb_id: 650
+  - title: Point Break
+    year: 1991
+    tmdb_id: 1089
+  - title: Barton Fink
+    year: 1991
+    tmdb_id: 290
+  - title: The Addams Family
+    year: 1991
+    tmdb_id: 2907
+  - title: JFK
+    year: 1991
+    tmdb_id: 820
+  - title: Wayne's World
+    year: 1992
+    tmdb_id: 8872
+  - title: The Player
+    year: 1992
+    tmdb_id: 10403
+  - title: Hard Boiled
+    year: 1992
+    tmdb_id: 11782
+  - title: One False Move
+    year: 1992
+    tmdb_id: 21128
+  - title: Unforgiven
+    year: 1992
+    tmdb_id: 33
+  - title: Last of the Mohicans
+    year: 1992
+    tmdb_id: 9361
+  - title: Glengarry Glen Ross
+    year: 1992
+    tmdb_id: 9504
+  - title: Malcolm X
+    year: 1992
+    tmdb_id: 1883
+  - title: Bad Lieutenant
+    year: 1992
+    tmdb_id: 12143
+  - title: The Crying Game
+    year: 1992
+    tmdb_id: 11386
+  - title: Jurassic Park
+    year: 1993
+    tmdb_id: 329
+  - title: The Fugitive
+    year: 1993
+    tmdb_id: 5503
+  - title: True Romance
+    year: 1993
+    tmdb_id: 319
+  - title: Dazed And Confused
+    year: 1993
+    tmdb_id: 9571
+  - title: A Bronx Tale
+    year: 1993
+    tmdb_id: 1607
+  - title: The Age Of Innocence
+    year: 1993
+    tmdb_id: 10436
+  - title: Short Cuts
+    year: 1993
+    tmdb_id: 695
+  - title: The Remains of The Day
+    year: 1993
+    tmdb_id: 1245
+  - title: Carlito’s Way
+    year: 1993
+    tmdb_id: 6075
+  - title: The Piano
+    year: 1993
+    tmdb_id: 713
+  - title: Crumb
+    year: 1994
+    tmdb_id: 26564
+  - title: Speed
+    year: 1994
+    tmdb_id: 1637
+  - title: Forrest Gump
+    year: 1994
+    tmdb_id: 13
+  - title: Chungking Express
+    year: 1994
+    tmdb_id: 11104
+  - title: Quiz Show
+    year: 1994
+    tmdb_id: 11450
+  - title: "Leon: The Professional"
+    year: 1994
+    tmdb_id: 101
+  - title: The Shawshank Redemption
+    year: 1994
+    tmdb_id: 278
+  - title: Ed Wood
+    year: 1994
+    tmdb_id: 522
+  - title: Heavenly Creatures
+    year: 1994
+    tmdb_id: 1024
+  - title: Hoop Dreams
+    year: 1994
+    tmdb_id: 14275
+  - title: Braveheart
+    year: 1995
+    tmdb_id: 197
+  - title: Safe
+    year: 1995
+    tmdb_id: 32646
+  - title: Apollo 13
+    year: 1995
+    tmdb_id: 568
+  - title: Clueless
+    year: 1995
+    tmdb_id: 9603
+  - title: The Usual Suspects
+    year: 1995
+    tmdb_id: 629
+  - title: Se7en
+    year: 1995
+    tmdb_id: 807
+  - title: Casino
+    year: 1995
+    tmdb_id: 524
+  - title: Heat
+    year: 1995
+    tmdb_id: 949
+  - title: Dead Man Walking
+    year: 1995
+    tmdb_id: 687
+  - title: 12 Monkeys
+    year: 1995
+    tmdb_id: 63
+  - title: Trainspotting
+    year: 1996
+    tmdb_id: 627
+  - title: Breaking the Waves
+    year: 1996
+    tmdb_id: 145
+  - title: The Cable Guy
+    year: 1996
+    tmdb_id: 9894
+  - title: Lone Star
+    year: 1996
+    tmdb_id: 26748
+  - title: Independence Day
+    year: 1996
+    tmdb_id: 602
+  - title: Bound
+    year: 1996
+    tmdb_id: 9303
+  - title: Irma Vep
+    year: 1996
+    tmdb_id: 25355
+  - title: The English Patient
+    year: 1996
+    tmdb_id: 409
+  - title: Sling Blade
+    year: 1996
+    tmdb_id: 12498
+  - title: Jerry Maguire
+    year: 1996
+    tmdb_id: 9390
+  - title: Spice World
+    year: 1997
+    tmdb_id: 6116
+  - title: Chasing Amy
+    year: 1997
+    tmdb_id: 2255
+  - title: Grosse Pointe Blank
+    year: 1997
+    tmdb_id: 9434
+  - title: Henry Fool
+    year: 1997
+    tmdb_id: 37410
+  - title: L.A. Confidential
+    year: 1997
+    tmdb_id: 2118
+  - title: Fast, Cheap & Out Of Control
+    year: 1997
+    tmdb_id: 25099
+  - title: Starship Troopers
+    year: 1997
+    tmdb_id: 563
+  - title: Eve's Bayou
+    year: 1997
+    tmdb_id: 45153
+  - title: Titanic
+    year: 1997
+    tmdb_id: 597
+  - title: Jackie Brown
+    year: 1997
+    tmdb_id: 184
+  - title: Dark City
+    year: 1998
+    tmdb_id: 2666
+  - title: Fear And Loathing In Las Vegas
+    year: 1998
+    tmdb_id: 1878
+  - title: Out Of Sight
+    year: 1998
+    tmdb_id: 1389
+  - title: Armageddon
+    year: 1998
+    tmdb_id: Armageddon
+  - title: Pi
+    year: 1998
+    tmdb_id: 473
+  - title: There's Something About Mary
+    year: 1998
+    tmdb_id: 544
+  - title: Saving Private Ryan
+    year: 1998
+    tmdb_id: 857
+  - title: Elizabeth
+    year: 1998
+    tmdb_id: 4518
+  - title: The Thin Red Line
+    year: 1998
+    tmdb_id: 8741
+  - title: American History X
+    year: 1998
+    tmdb_id: 73
+  - title: American Movie
+    year: 1999
+    tmdb_id: 14242
+  - title: The Blair Witch Project
+    year: 1999
+    tmdb_id: 2667
+  - title: Election
+    year: 1999
+    tmdb_id: Election
+  - title: "South Park: Bigger, Longer & Uncut"
+    year: 1999
+    tmdb_id: 9473
+  - title: The Sixth Sense
+    year: 1999
+    tmdb_id: 745
+  - title: Boys Don't Cry
+    year: 1999
+    tmdb_id: 226
+  - title: American Beauty
+    year: 1999
+    tmdb_id: 14
+  - title: Three Kings
+    year: 1999
+    tmdb_id: 6415
+  - title: Sweet And Lowdown
+    year: 1999
+    tmdb_id: 9684
+  - title: Magnolia
+    year: 1999
+    tmdb_id: 334
