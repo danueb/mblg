@@ -147,7 +147,9 @@ $(document).ready(function() {
         model: this.model.currentPost().movie(),
         viewMaster: this.model
       });
-      this.aboutView = new AboutView();
+      this.aboutView = new AboutView({
+        viewMaster: this.model
+      });
       this.listView = new ListView({
         collection: movies,
         viewMaster: this.model
@@ -245,14 +247,21 @@ $(document).ready(function() {
 
     initialize: function() {
       _.bindAll(this, 'render');
+      this.viewMaster = this.options.viewMaster;
     },
 
     render: function() {
       $(this.el).html( this.template( {} ) );
       return this;
-    }
+    },
 
-    // TODO: remember, there's a link to the list view in here
+    events: {
+      "click a.listLink": "list"
+    },
+
+    list: function() {
+      this.viewMaster.goToList();
+    }
   });
 
   window.ListView = Backbone.View.extend({
