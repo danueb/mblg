@@ -15,8 +15,9 @@ gem 'turbolinks'
 
 gem 'active_model_serializers'
 
+gem 'faker'
+
 group :development, :test do
-  gem 'faker'
   gem 'sqlite3'
 end
 

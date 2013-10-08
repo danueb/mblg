@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @data ||= File.read('app/assets/javascripts/fake_posts.json')
+    @data ||= Post.all
+    render :json => @data, each_serializer: SimplePostSerializer
+  end
+
+  def show
+    @data ||= Post.find(params[:id])
     render :json => @data
   end
+
 end

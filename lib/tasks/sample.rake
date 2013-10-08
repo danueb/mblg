@@ -5,7 +5,7 @@ namespace :sample do
 
     12.times do |i|
       content = Faker::Lorem
-                  .paragraphs(4)
+                  .paragraphs(12)
                   .map{ |text| "<p>" + text + "</p>" }
                   .join
                   .html_safe
