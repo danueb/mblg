@@ -11,6 +11,8 @@ window.MovieInfoView = Backbone.View.extend({
 
     if(!this.model.facts.has('title')){
       this.model.facts.fetch();
+    } else if(!this.model.has('facts')){
+      this.updateFacts();
     }
   },
 
