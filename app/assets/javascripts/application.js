@@ -16,4 +16,7 @@
 //= require underscore
 //= require handlebars
 //= require backbone
-//= require_tree .
+//= require_directory ./models
+//= require_directory ./views
+//= require_directory ./templates
+//= require main
