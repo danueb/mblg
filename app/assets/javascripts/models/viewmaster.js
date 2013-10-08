@@ -62,7 +62,7 @@ window.ViewMaster = Backbone.Model.extend({
   },
 
   goNext: function() {
-    var nextIndex = this.get('currentPostIndex') + 1;
+    var nextIndex = parseInt(this.get('currentPostIndex')) + 1;
     if(!this.onLast()){
       this.set({'currentPostIndex': nextIndex});
       this.setPostUrl();
@@ -70,7 +70,7 @@ window.ViewMaster = Backbone.Model.extend({
   },
 
   goPrev: function() {
-    var prevIndex = this.get('currentPostIndex') - 1;
+    var prevIndex = parseInt(this.get('currentPostIndex')) - 1;
     if(!this.onFirst()){
       this.set({'currentPostIndex': prevIndex});
       this.setPostUrl();
