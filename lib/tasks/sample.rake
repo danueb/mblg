@@ -9,8 +9,7 @@ namespace :sample do
                   .map{ |text| "<p>" + text + "</p>" }
                   .join
                   .html_safe
-      Post.create!(movie: Movie.find(i+1),
-                   content: content)
+      Movie.find(i+1).create_post(content: content)
     end
   end
 end

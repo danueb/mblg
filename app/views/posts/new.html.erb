@@ -1,0 +1,20 @@
+<% provide :title, "New Post" %>
+<div class="new-post">
+  <div class="container">
+    <%= form_tag("/posts", method: "post") do %>
+
+      <div>
+        <%= label :movie, :id, "Movie" %>
+        <%= collection_select(:movie, :id, @movies, :id, :title) %>
+      </div>
+
+      <div>
+        <%= label :post, :content %>
+        <%= text_area :post, :content %> 
+      </div>
+      <div class='submit'>
+        <%= submit_tag "add new post" %>
+      </div>
+    <% end %>
+  </div>
+</div>

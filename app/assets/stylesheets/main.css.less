@@ -164,6 +164,10 @@ body {
       font-size: 12px;
     }
   }
+  .disclaimer {
+    font-style: italic;
+    color: lighten(@nearBlack, 25%);
+  }
   footer {
     .make-row();
     div {
@@ -203,6 +207,25 @@ body {
       span {
         font-weight: bold;
       }
+    }
+  }
+}
+
+.new-post, .edit-post {
+  .content-chunk(@lightPurple, @darkPurple);
+  div{
+    margin-bottom: 25px;
+    label {
+      width: 100px;
+      text-align: right;
+      padding-right: 5px;
+    }
+    textarea {
+      width: 435px;
+      height: 400px;
+    }
+    &.submit {
+      margin-left: 103px;
     }
   }
 }

@@ -14,7 +14,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'active_model_serializers'
-
 gem 'faker'
 
 group :development, :test do
