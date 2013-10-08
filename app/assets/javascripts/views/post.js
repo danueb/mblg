@@ -7,12 +7,18 @@ window.PostView = Backbone.View.extend({
     this.template = Handlebars.compile( window.postTemplate );
 
     this.viewMaster = this.options.viewMaster;
+
+    this.listenTo(this.model, 'change', this.render);
+    if(!this.model.has('content')){
+      this.model.fetch();
+    }
   },
 
   render: function() {
     $(this.el).html( this.template( this.model.toJSON() ) );
     this.$(".prev").toggleClass('disabled', this.viewMaster.onFirst());
     this.$(".next").toggleClass('disabled', this.viewMaster.onLast());
+
     return this;
   },
 

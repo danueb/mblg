@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @data ||= Post.find(params[:id])
-    render :json => @data
+    render :json => @data, root: false
   end
 
 end
