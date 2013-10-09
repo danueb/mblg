@@ -1,0 +1,14 @@
+<% provide :title, "Edit Post" %>
+<div class="edit-post">
+  <div class="container">
+    <%= form_for @post do |f| %>
+      <div>
+        <%= f.label :content %>
+        <%= f.text_area :content %> 
+      </div>
+      <div class='submit'>
+        <%= f.submit "update post" %>
+      </div>
+    <% end %>
+  </div>
+</div>

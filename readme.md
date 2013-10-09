@@ -9,6 +9,6 @@ http://intense-escarpment-1261.herokuapp.com/
 
 ## development ##
 
-The front end is mostly done, at least functionally. Some of it could be better organized, purely in terms of where things like templates live.
+Mostly done. There are some tweaks to make here and there (Sometimes the data I get from tmdb isn't formatted very appealingly, there's a lot of copy in templates that should probably live somewhere else), but for the most part the only big step left is to give it a more production-appropriate URL and start populating it with real posts.
 
-I'm now working to set up the database and the means by which to add posts. This is Rails, though, so it will almost build itself.
+Post creating and editing are currently on separate pages from the "main" single-page backbone app that is the rest of the site. Maybe later if I feel like a minor project I'll fold it all in, but in the short term this makes things way simpler (especially concerning authentication). Nobody will ever see the creation/editing pages but me anyway.
