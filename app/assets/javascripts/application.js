@@ -17,6 +17,6 @@
 //= require handlebars
 //= require backbone
 //= require_directory ./models
-//= require_directory ./views
 //= require_directory ./templates
+//= require_directory ./views
 //= require main

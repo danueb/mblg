@@ -8,7 +8,7 @@ window.ListView = Backbone.View.extend({
   },
 
   render: function() {
-    var vm = this.options.viewMaster;
+    var $listTag, vm = this.options.viewMaster;
     $(this.el).html( this.template( {} ));
     $listTag = this.$('ul.movie-list');
     this.collection.each(function(movie){
