@@ -9,10 +9,9 @@ Handlebars.registerHelper('director', function(crew){
 Handlebars.registerHelper('writerLabel', function(crew){
   var writers = _.where(crew, {department: "Writing"});
   if(writers.length > 1){
-    return "Writers"
-  } else {
-    return "Writer"
+    return "Writers";
   }
+  return "Writer";
 });
 
 Handlebars.registerHelper('writers', function(crew){

@@ -21,7 +21,6 @@ window.MovieListingView = Backbone.View.extend({
 
   viewPost: function() {
     var id = this.model.get('id') - 1;
-    console.log(id);
     this.viewMaster.goToPost(id);
   }
 });
