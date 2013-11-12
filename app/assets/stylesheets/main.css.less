@@ -229,3 +229,27 @@ body {
     }
   }
 }
+
+span.spoiler {
+  display: inline-block;
+  background: none repeat scroll 0 0 black!important;
+  color: black!important;
+  cursor: default;
+  border: none;
+  font-weight: normal;
+  &:hover {
+    color: white!important;
+    text-decoration: none; 
+  }
+  &:before {
+    background: black;
+    color: white;
+    white-space: pre-wrap;
+    content: " [spoiler] ";
+  }
+  &:after {
+    background: black;
+    white-space: pre-wrap;
+    content: " ";
+  }
+}
